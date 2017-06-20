@@ -346,6 +346,14 @@ class FormMakerFunctionCollection
                 $tpl    = eZTemplate::factory();
                 $mail   = new eZMail();
 
+                // Convert to another character encoding
+                if ($this->ini->hasVariable('Encoding', 'OutputCharset')) {
+                    $mail->TextCodec = eZTextCodec::instance(
+                        $mail->contentCharset(),
+                        $this->ini->variable('Encoding', 'OutputCharset')
+                    );
+                }
+
                 $tpl->setVariable( 'data', $email_data );
                 $mail->setSender( $sender );
                 $mail->setSubject( $subject );
