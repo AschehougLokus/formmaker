@@ -348,10 +348,7 @@ class FormMakerFunctionCollection
 
                 // Convert to another character encoding
                 if ($this->ini->hasVariable('Encoding', 'OutputCharset')) {
-                    $mail->TextCodec = eZTextCodec::instance(
-                        $mail->contentCharset(),
-                        $this->ini->variable('Encoding', 'OutputCharset')
-                    );
+                    $mail->setContentType(false, $this->ini->variable('Encoding', 'OutputCharset'));
                 }
 
                 $tpl->setVariable( 'data', $email_data );
@@ -440,17 +437,17 @@ class FormMakerFunctionCollection
 
     /**
      * Method removes form session data
-     */
+    */
     private function removeSessionData()
     {
-        foreach ( $_SESSION['_ezpubllish'] as $key => $value )
+        foreach ( $_SESSION['_ezpublish'] as $key => $value )
         {
             if ( !preg_match( '/^' . formDefinitions::PAGE_SESSION_PREFIX . '/', $key ) )
             {
                 continue;
             }
             // clean up the session
-            unset( $_SESSION[$key] );
+            unset( $_SESSION['_ezpubllish'][$key] );
         }
     }
 
