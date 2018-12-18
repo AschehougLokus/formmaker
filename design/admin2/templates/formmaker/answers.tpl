@@ -2,8 +2,8 @@
 - $view_parameters array
 *}
 
-{ezcss_require( array( 'http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css', 'tablesorter.css', 'style.css' ) )}
-{ezscript_require( 'http://code.jquery.com/ui/1.9.2/jquery-ui.js' )}
+{ezcss_require( array( 'https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css', 'tablesorter.css', 'style.css' ) )}
+{ezscript_require( 'https://code.jquery.com/ui/1.9.2/jquery-ui.js' )}
 {ezscript_require( array( 'jquery.tablesorter.js', 'answers.js' ) )}
 
 {def $limit = 20
